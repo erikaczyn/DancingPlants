@@ -12,10 +12,13 @@ public class PlayerMovement : MonoBehaviour
     private float vertical;
     private Rigidbody2D rb;
     private int groundLayer;
-    private float speed = 8.0f;
-    private float jumpSpeed = 7.0f;
+    [SerializeField] private float speed = 8.0f;
+    [SerializeField] private float jumpSpeed = 7.0f;
+    [SerializeField] private float songDuration = 2.0f;
     // Set the start screen in the Inspector
     [SerializeField] private GameObject startScreen;
+
+    [SerializeField] private GameObject songHitbox;
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +54,23 @@ public class PlayerMovement : MonoBehaviour
             startScreen.SetActive(true);
             Stop();
         }
+        if (Input.GetButton("Fire1") && canMove && canJump)
+        {
+            songHitbox.SetActive(true);
+            canMove = false;
+            canJump = false;
+            Stop();
+            StartCoroutine("songDisable");
+        }
     }
-
+    IEnumerator songDisable()
+    {
+        yield return new WaitForSeconds(songDuration);
+        songHitbox.SetActive(false);
+        canMove = true;
+        canJump = true;
+        rb.WakeUp();
+    }
     // FixedUpdate has the frequency of the physics system; it is called every fixed frame-rate frame
     void FixedUpdate()
     {
