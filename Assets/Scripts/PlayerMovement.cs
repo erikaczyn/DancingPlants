@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float vertical;
     private Rigidbody2D rb;
     private int groundLayer;
+    private Inventory inventory;
     [SerializeField] private float speed = 8.0f;
     [SerializeField] private float jumpSpeed = 7.0f;
     [SerializeField] private float songDuration = 2.0f;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        inventory = GetComponent<Inventory>();
         rb = GetComponent<Rigidbody2D>();
         groundLayer = LayerMask.NameToLayer("Ground");
         Stop();
@@ -81,9 +83,17 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // Check that the collider touches the ground layer
-        if (other.gameObject.layer == 3)
+        if (other.gameObject.layer == groundLayer)
         {
             canJump = true;
+        }
+        // Check that the collider touches a collectable
+        if (other.gameObject.tag == "Collectable")
+        {
+            GameObject collectable = other.gameObject;
+            Collectable item = collectable.GetComponent<Collectable>();
+            GameObject.Destroy(collectable);
+            inventory.AddItem(item);
         }
     }
 
