@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject startScreen;
 
     [SerializeField] private GameObject songHitbox;
+    
+    //Audio
+    private AudioClip song1;
+    private AudioSource audio;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
         inventory = GetComponent<Inventory>();
         rb = GetComponent<Rigidbody2D>();
         groundLayer = LayerMask.NameToLayer("Ground");
+
+        //Audio
+        song1 = Resources.Load<AudioClip>("Harp Music");
+        audio = GetComponent<AudioSource>();
+
         Stop();
     }
 
@@ -59,6 +68,9 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetButton("Fire1") && canMove && canJump)
         {
+            GetComponent<AudioSource>().clip = song1;
+            GetComponent<AudioSource>().Play();
+
             songHitbox.SetActive(true);
             canMove = false;
             canJump = false;
