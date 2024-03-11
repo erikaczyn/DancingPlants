@@ -68,8 +68,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetButton("Fire1") && canMove && canJump)
         {
-            GetComponent<AudioSource>().clip = song1;
-            GetComponent<AudioSource>().Play();
+            audio.clip = song1;
+            audio.Play();
 
             songHitbox.SetActive(true);
             canMove = false;
