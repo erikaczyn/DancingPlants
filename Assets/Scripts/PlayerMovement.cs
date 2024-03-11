@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private int groundLayer;
     private Inventory inventory;
+    private bool isFacingRight = true;
     [SerializeField] private float speed = 8.0f;
     [SerializeField] private float jumpSpeed = 7.0f;
     [SerializeField] private float songDuration = 2.0f;
@@ -76,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
             Stop();
             StartCoroutine("songDisable");
         }
+        FlipSprite();
     }
     IEnumerator songDisable()
     {
@@ -134,5 +136,16 @@ public class PlayerMovement : MonoBehaviour
         canMove = true;
         canJump = true;
         rb.WakeUp();
+    }
+
+    // Flips the sprite if it is facing one way and moving the other way
+    void FlipSprite()
+    {
+        if ((isFacingRight && horizontal < 0.0f) || (!isFacingRight && horizontal > 0.0f))
+        {
+            isFacingRight = !isFacingRight;
+            SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+        }
     }
 }
