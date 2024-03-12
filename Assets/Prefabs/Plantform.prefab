@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 3589279921174070606}
   - component: {fileID: 6947072168661568884}
   - component: {fileID: 4149989595198113471}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plantform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
