@@ -5786,6 +5786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f7767aecb79604aac6f3a7378c1d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: []
 --- !u!82 &1243203100
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6788,6 +6789,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectable
       objectReference: {fileID: 0}
+    - target: {fileID: 2065874811044333349, guid: a67cb62e3e4a5ff4c968796ccb144b83, type: 3}
+      propertyPath: song
+      value: 
+      objectReference: {fileID: 8300000, guid: ec09e3ced48794741bc37108e9031933, type: 3}
     - target: {fileID: 7517206648566112853, guid: a67cb62e3e4a5ff4c968796ccb144b83, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.14

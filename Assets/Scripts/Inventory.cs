@@ -6,7 +6,7 @@ public class Inventory : MonoBehaviour
 {
     private int numItems;
     private int maxItems = 5;
-    private Collectable[] inventory;
+    public Collectable[] inventory;
 
     // Start is called before the first frame update
     void Start()

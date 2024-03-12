@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject songHitbox;
     
     //Audio
-    private AudioClip song1;
     private AudioSource audio;
 
     // Start is called before the first frame update
@@ -34,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
         groundLayer = LayerMask.NameToLayer("Ground");
 
         //Audio
-        song1 = Resources.Load<AudioClip>("Harp Music");
         audio = GetComponent<AudioSource>();
 
         Stop();
@@ -68,12 +66,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetButton("Fire1") && canMove && canJump)
         {
-            audio.clip = song1;
-            audio.Play();
-
-            songHitbox.SetActive(true);
-            canMove = false;
-            canJump = false;
+            PlaySong(inventory.inventory[0].song);
+            
             Stop();
             StartCoroutine("songDisable");
         }
@@ -136,6 +130,16 @@ public class PlayerMovement : MonoBehaviour
         canMove = true;
         canJump = true;
         rb.WakeUp();
+    }
+
+    private void PlaySong(AudioClip song)
+    {
+        audio.clip = song;
+        audio.Play();
+
+        songHitbox.SetActive(true);
+        canMove = false;
+        canJump = false;
     }
 
     // Flips the sprite if it is facing one way and moving the other way
