@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlantFormController : MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D plantformCol;
+    [SerializeField] private BoxCollider2D[] plantformCols;
     [SerializeField] private PlantController plantController;
     // Start is called before the first frame update
     void Awake()
@@ -17,11 +17,16 @@ public class PlantFormController : MonoBehaviour
     {
         if (plantController.plantEffect)
         {
-            plantformCol.enabled = true;
+            foreach (BoxCollider2D col in plantformCols) {
+                col.enabled = true;
+            }
         }
         else
         {
-            plantformCol.enabled = false;
+            foreach (BoxCollider2D col in plantformCols)
+            {
+                col.enabled = false;
+            }
         }
     }
 }
