@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private int numItems;
+    public int numItems;
     private int maxItems = 5;
     private Collectable[] inventory;
 

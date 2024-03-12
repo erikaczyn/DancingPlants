@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             startScreen.SetActive(true);
             Stop();
         }
-        if (Input.GetButton("Fire1") && canMove && canJump)
+        if (Input.GetButton("Fire1") && canMove && canJump && inventory.numItems == 1)
         {
             audio.clip = song1;
             audio.Play();

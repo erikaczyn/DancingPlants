@@ -8738,6 +8738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f7767aecb79604aac6f3a7378c1d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numItems: 0
 --- !u!82 &1243203100
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9803,6 +9804,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3655057047536637831, guid: b10bba11e160ea34cbc8e7630eeb4c01, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3655057047536637831, guid: b10bba11e160ea34cbc8e7630eeb4c01, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4681097608669721616, guid: b10bba11e160ea34cbc8e7630eeb4c01, type: 3}
       propertyPath: m_Name
       value: Plantform
