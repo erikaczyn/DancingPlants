@@ -37,7 +37,8 @@ public class PlayerMovement : MonoBehaviour
         song1 = Resources.Load<AudioClip>("Harp Music");
         audio = GetComponent<AudioSource>();
 
-        Stop();
+        canMove = true;
+        canJump = true;
     }
 
     // Update is called once per frame
