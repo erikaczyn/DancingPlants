@@ -6,13 +6,13 @@ public class Inventory : MonoBehaviour
 {
     private int numItems;
     private int maxItems = 5;
-    public Collectable[] inventory;
+    public Collectable[] items;
 
     // Start is called before the first frame update
     void Start()
     {
         numItems = 0;
-        inventory = new Collectable[maxItems];
+        items = new Collectable[maxItems];
     }
 
     // Update is called once per frame
@@ -26,9 +26,9 @@ public class Inventory : MonoBehaviour
     {
         if (numItems < maxItems)
         {
-            inventory[numItems] = item;
+            items[numItems] = item;
             numItems++;
         }
-        Debug.Log("Collected " + inventory[0].name);
+        Debug.Log("Collected " + items[0].name);
     }
 }
